@@ -2,8 +2,11 @@ import AppLayout from '@/components/Layouts/AppLayout'
 import Head from 'next/head'
 import axios from '@/lib/axios'
 import { useEffect } from 'react'
+import { useAuth } from '@/hooks/auth'
 
 const Dashboard = () => {
+    const { user } = useAuth({ middleware: 'auth' })
+
     return (
         <AppLayout
             header={

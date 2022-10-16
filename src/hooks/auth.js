@@ -95,7 +95,7 @@ export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
             await axios.post('/logout').then(() => mutate())
         }
 
-        window.location.pathname = '/beranda'
+        window.location.pathname = '/login'
     }
 
     useEffect(() => {
