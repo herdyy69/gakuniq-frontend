@@ -1,28 +1,35 @@
-import Navigation from '@/components/Layouts/Navigation'
 import Nav from '@/components/Layouts/Nav'
-import { useAuth } from '@/hooks/auth'
+import Footer from './Footer'
+import NavLink from '@/components/NavLink'
+import { useRouter } from 'next/router'
 
 const AppLayout = ({ header, children, ...props }) => {
-    const { user, guest } = useAuth({ middleware: 'guest' })
+    const router = useRouter()
 
     return (
         <>
-            <div className="min-h-screen bg-[#F4F4F4]">
-                {user ? <Nav user={user} /> : <Nav user={guest} />}
+            <div className="min-h-screen bg-[#FFFF]">
+                <Nav />
                 {props.title ? (
                     <h1 className="py-4 px-4 font-extrabold">{props.title}</h1>
                 ) : (
                     ' '
                 )}
                 {/* Page Heading */}
-                <header className="bg-[#FFFFFF] shadow">
-                    <div className="mx-auto py-6 px-4 sm:px-6 lg:px-8 shadow">
-                        {header}
-                    </div>
-                </header>
+                {router.pathname === '/beranda' ? (
+                    ''
+                ) : (
+                    <header className="bg-[#FFFFFF] shadow">
+                        <div className="mx-auto py-6 px-4 sm:px-6 lg:px-8 shadow">
+                            {header}
+                        </div>
+                    </header>
+                )}
+                <main>{children}</main>
+
                 {props.subTitle}
                 {/* Page Content */}
-                <main>{children}</main>
+                <Footer />
             </div>
         </>
     )

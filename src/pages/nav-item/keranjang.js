@@ -1,117 +1,51 @@
-import React from 'react'
+import NavLink from '@/components/NavLink'
+import React, { useState } from 'react'
+import { useRouter } from 'next/router'
 import AppLayout from '@/components/Layouts/AppLayout'
 import Head from 'next/head'
 import Link from 'next/link'
 import Image from 'next/image'
+import Select from 'react-select'
 
 const Keranjang = () => {
+    const router = useRouter()
+
     const data = [
         {
             id: 1,
             product_title: 'Costanza Bendelow',
-            sub_title: 'Games',
+            harga: 10000,
+            qty: 1,
             color: 'Goldenrod',
             size: 'M',
             type: 'BFZ',
-            price: 96,
             image: 'http://dummyimage.com/82x92.png/5fa2dd/ffffff',
         },
         {
             id: 2,
-            product_title: 'Gaelan Gilardone',
-            sub_title: 'Games',
-            color: 'Orange',
-            size: 'M',
-            type: 'WDR',
-            price: 35,
-            image: 'http://dummyimage.com/90x83.png/dddddd/000000',
-        },
-        {
-            id: 3,
-            product_title: 'Rancell Rogan',
-            sub_title: 'Health',
-            color: 'Violet',
-            size: 'M',
-            type: 'ATVI',
-            price: 59,
-            image: 'http://dummyimage.com/93x99.png/5fa2dd/ffffff',
-        },
-        {
-            id: 4,
-            product_title: 'Wilek Crallan',
-            sub_title: 'Industrial',
+            product_title: 'Costanza Bendelow',
+            harga: 20000,
+            qty: 3,
             color: 'Goldenrod',
-            size: '2XL',
-            type: 'AEB',
-            price: 41,
-            image: 'http://dummyimage.com/85x98.png/5fa2dd/ffffff',
-        },
-        {
-            id: 5,
-            product_title: 'Thurstan Eam',
-            sub_title: 'Garden',
-            color: 'Goldenrod',
-            size: '3XL',
-            type: 'TGLS',
-            price: 17,
-            image: 'http://dummyimage.com/100x89.png/ff4444/ffffff',
-        },
-        {
-            id: 6,
-            product_title: 'Wallis Pifford',
-            sub_title: 'Shoes',
-            color: 'Mauv',
-            size: '3XL',
-            type: 'JAZZ',
-            price: 71,
-            image: 'http://dummyimage.com/92x94.png/cc0000/ffffff',
-        },
-        {
-            id: 7,
-            product_title: 'Stacey Defont',
-            sub_title: 'Tools',
-            color: 'Maroon',
-            size: 'S',
-            type: 'PSA^W',
-            price: 10,
-            image: 'http://dummyimage.com/92x98.png/5fa2dd/ffffff',
-        },
-        {
-            id: 8,
-            product_title: 'Emelen Gerraty',
-            sub_title: 'Movies',
-            color: 'Red',
-            size: '3XL',
-            type: 'CNCE',
-            price: 83,
-            image: 'http://dummyimage.com/100x84.png/dddddd/000000',
-        },
-        {
-            id: 9,
-            product_title: 'Phil Mazdon',
-            sub_title: 'Industrial',
-            color: 'Indigo',
             size: 'M',
-            type: 'HASI',
-            price: 20,
-            image: 'http://dummyimage.com/80x86.png/dddddd/000000',
-        },
-        {
-            id: 10,
-            product_title: 'Ava Linstead',
-            sub_title: 'Electronics',
-            color: 'Green',
-            size: '2XL',
-            type: 'RP',
-            price: 45,
-            image: 'http://dummyimage.com/86x88.png/5fa2dd/ffffff',
+            type: 'BFZ',
+            image: 'http://dummyimage.com/82x92.png/5fa2dd/ffffff',
         },
     ]
-    var number = data.length
 
+    const totalQty = data.reduce((acc, item) => {
+        return acc + item.qty
+    }, 0)
+    const totalHarga = data.reduce((acc, item) => {
+        return acc + item.harga * item.qty
+    }, 0)
+    const ppn = totalHarga * 0.1
+    const totalHargaPpn = totalHarga - ppn
+
+    var onCart = data.length
     return (
         <AppLayout
-            title="KERANJANG BELANJA"
+            title=<h1 className="text-2xl font-bold">KERANJANG BELANJA</h1>
             subTitle={
                 <div className="bg-[#FFFFFF] shadow mt-3">
                     <div className="max-w-7xl mx-auto py-0 px-0 shadow">
@@ -130,48 +64,138 @@ const Keranjang = () => {
                     </div>
                 </div>
             }
+            headerX="TRUE"
             header={
                 <>
                     <span className="text-sm font-extrabold">
-                        {number} PRODUK
+                        {onCart} PRODUK
                     </span>
-                    <div className="flex flex-wrap flex-col sm:flex-row">
-                        {data.map(data => (
-                            <div
-                                className="flex w-4/5 sm:w-auto bg-slate-300 m-1 p-2"
-                                key={data.id}>
-                                <div className="flex flex-col sm:flex-row items-center">
-                                    <div className="flex-shrink-0 flex">
-                                        <Image
-                                            src="/logo.png"
-                                            width={70}
-                                            height={70}
-                                        />
+                    <div className="flex flex-row flex-wrap md:flex-nowrap sm:flex-row">
+                        <div className="flex flex-col">
+                            {data.map(data => (
+                                <div
+                                    className="md:w-[50vw] bg-transparent m-1 p-2"
+                                    key={data.id}>
+                                    <div className="flex flex-row">
+                                        <div className="flex bg-black w-[20rem] h-[15rem]"></div>
+                                        <div className="flex flex-col mx-5">
+                                            <h1 className="text-lg md:text-2xl font-bold">
+                                                {data.product_title}
+                                                <NavLink
+                                                    href={{
+                                                        pathname: '/transaksi',
+                                                    }}
+                                                    active={
+                                                        router.pathname ===
+                                                        '/transaksi'
+                                                    }>
+                                                    <span className="text-2xl text-red-600 font-bold">
+                                                        X
+                                                    </span>
+                                                </NavLink>
+                                            </h1>
+                                            <span className="text-xs md:text-sm font-extralight text-[#7a7a7a]">
+                                                KODE 12312321212
+                                            </span>
+                                            <span className="text-xs md:text-sm font-extralight">
+                                                WARNA {data.color}
+                                            </span>
+                                            <span className="text-xs md:text-sm font-extralight">
+                                                UKURAN {data.size}
+                                            </span>
+                                            <span className="text-xs md:text-sm font-extralight text-[#7a7a7a]">
+                                                New, Limited Store
+                                            </span>
+                                            <h2 className="text-lg font-bold mt-3">
+                                                Rp {data.harga}
+                                            </h2>
+                                            <div className="flex items-center justify-between">
+                                                <h1 className="text-sm md:text-lg font-bold">
+                                                    JUMLAH
+                                                </h1>
+                                                <h1 className="text-sm md:text-lg font-bold border-2 px-2">
+                                                    {data.qty}
+                                                </h1>
+                                            </div>
+                                            <h2 className="text-lg font-bold mt-3">
+                                                SUBTOTAL Rp
+                                                {data.harga * data.qty}
+                                            </h2>
+                                        </div>
                                     </div>
-                                    <span className="mx-1 "></span>
-                                    <div className="flex flex-col overflow-clip z-10">
-                                        <span className="text-[9px] font-extrabold flex ">
-                                            {data.product_title}
-                                        </span>
-                                        <span className="text-[8.5px] font-extralight">
-                                            {data.sub_title}
-                                        </span>
-                                        <span className="text-[8.5px] font-bold">
-                                            Warna : {data.color}
-                                        </span>
-                                        <span className="text-[6.5px] font-bold">
-                                            UKURAN : {data.type}
-                                        </span>
-                                        <span className="text-[6px] font-extralight">
-                                            NEW
-                                        </span>
-                                        <span className="text-[9px] font-extrabold flex ">
-                                            Rp. {data.price}
-                                        </span>
+                                </div>
+                            ))}
+                        </div>
+                        <div className="flex flex-col">
+                            <div
+                                className="md:w-[40vw] bg-transparent m-1 p-2"
+                                key={data.id}>
+                                <div className="flex flex-col">
+                                    <div className="flex flex-col border-2 p-5">
+                                        <h1 className="text-lg md:text-lg font-bold">
+                                            RINGKASAN PESANAN {totalQty} PRODUCT
+                                        </h1>
+                                        <div className="flex justify-between my-2">
+                                            <span className="text-xs md:text-sm font-extralight text-[#7a7a7a]">
+                                                SUBTOTAL PRODUCT
+                                            </span>
+                                            <span className="text-xs md:text-sm font-extralight text-[#7a7a7a]">
+                                                Rp {totalHarga}
+                                            </span>
+                                        </div>
+                                        <div className="flex justify-between my-2">
+                                            <h1 className="text-lg md:text-lg font-bold">
+                                                SUBTOTAL
+                                            </h1>
+                                            <h1 className="text-lg md:text-lg font-bold">
+                                                Rp {totalHarga}
+                                            </h1>
+                                        </div>
+                                        <div className="flex justify-between my-2">
+                                            <span className="text-xs md:text-sm font-extralight text-[#7a7a7a]">
+                                                TERMASUK PPN
+                                            </span>
+                                            <span className="text-xs md:text-sm font-extralight text-[#7a7a7a]">
+                                                Rp {ppn}
+                                            </span>
+                                        </div>
+                                        <div className="flex justify-between my-2">
+                                            <h1 className="text-lg md:text-lg font-bold">
+                                                TOTAL PESANAN
+                                            </h1>
+                                            <h1 className="text-lg md:text-lg font-bold">
+                                                Rp {totalHargaPpn}
+                                            </h1>
+                                        </div>
+                                    </div>
+
+                                    <div className="flex flex-col border-y-2 py-3 mt-5">
+                                        <NavLink
+                                            href={{
+                                                pathname: '/checkout',
+                                            }}
+                                            active={
+                                                router.pathname === '/checkout'
+                                            }>
+                                            <button className="btn w-full">
+                                                LANJUT KE PEMBAYARAN
+                                            </button>
+                                        </NavLink>
+                                        <NavLink
+                                            href={{
+                                                pathname: '/katalog',
+                                            }}
+                                            active={
+                                                router.pathname === '/katalog'
+                                            }>
+                                            <button className="btn w-full">
+                                                LANJUT BELANJA
+                                            </button>
+                                        </NavLink>
                                     </div>
                                 </div>
                             </div>
-                        ))}
+                        </div>
                     </div>
                 </>
             }>

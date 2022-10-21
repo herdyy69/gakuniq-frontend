@@ -1,0 +1,36 @@
+.radio-buttons {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .custom-radio input {
+    display: none;
+  }
+
+  .radio-btn {
+    margin: 3px;
+    width: 60px;
+    height: 50px;
+    border: 3px solid transparent;
+    display: inline-block;
+    border-radius: 10px;
+    position: relative;
+    text-align: center;
+    box-shadow: 0 0 20px #c3c3c367;
+    cursor: pointer;
+  }
+  .radio-btn h3 {
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    top: 115%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+ 
+
+  .custom-radio input:checked + .radio-btn {
+    border: 2px solid #000;
+  }

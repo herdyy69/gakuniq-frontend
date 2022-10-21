@@ -1,0 +1,5 @@
+<div className="flex flex-col mt-5">
+                                        <div className="flex justify-between border-y-2 py-3">
+                                            <span>VOUCHER</span>
+                                        </div>
+                                    </div>
