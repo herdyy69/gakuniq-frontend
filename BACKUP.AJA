@@ -3,3 +3,33 @@
                                             <span>VOUCHER</span>
                                         </div>
                                     </div>
+
+
+                                    <div className="card card-side w-full h-full bg-[#404040] border-slate-800 shadow-xl">
+                    //     <figure>
+                    //         <div className="bg-slate-800 w-64 h-80 items-center justify-center"></div>
+                    //     </figure>
+                    //     <div className="card-body text-white">
+                    //         <h2 className="card-title">{data.title}</h2>
+                    //         <span className="text-lg overflow-visible">
+                    //             {data.desc}{' '}
+                    //         </span>
+                    //         <span className="text-lg font-bold">
+                    //             Rp {data.harga}
+                    //         </span>
+                    //         <div className="flex flex-row flex-nowrap items-center">
+                    //             <div className="badge rounded-[5px] p-3 bg-red-500 border-hidden text-white font-bold">
+                    //                 {data.discount}%
+                    //             </div>
+                    //             <span className="text-xs font-light line-through mx-2">
+                    //                 Rp {data.hargaDiscount}{' '}
+                    //             </span>
+                    //         </div>
+                    //         <p></p>
+                    //         <div className="card-actions justify-start">
+                    //             <button className="btn bg-red-700 border-none text-white">
+                    //                 BUY NOW!
+                    //             </button>
+                    //         </div>
+                    //     </div>
+                    // </div>
