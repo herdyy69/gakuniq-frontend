@@ -129,10 +129,14 @@ const Nav = () => {
                             </NavLink>
                             <NavLink
                                 href={{
-                                    pathname: '/nav-item/menu',
+                                    pathname: '/akun',
                                 }}
-                                active={router.pathname === '/nav-item/menu'}>
-                                Menu
+                                active={
+                                    router.pathname === '/akun' ||
+                                    router.pathname === '/akun/voucher' ||
+                                    router.pathname === '/akun/topup'
+                                }>
+                                Akun
                             </NavLink>
                         </div>
                     </div>
