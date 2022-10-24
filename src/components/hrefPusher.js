@@ -14,7 +14,7 @@ export const HrefPusher = ({ children, Props }) => {
         <a
             href={pathname}
             onClick={handlePush}
-            className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded-sm shadow mt-3 ml-3">
+            className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded-sm shadow text-sm mt-3 ml-3">
             {children}
         </a>
     )

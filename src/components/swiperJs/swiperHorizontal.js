@@ -1,5 +1,5 @@
 import React from 'react'
-import { CardRow } from '../card/cardRow'
+import { CardCol } from '../card/cardCol'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { HrefPusher } from '../hrefPusher'
 import 'swiper/css'
@@ -41,13 +41,53 @@ const SwiperHorizontal = () => {
             image: '#737373',
             href: '#',
         },
+        {
+            id: 3,
+            title: 'NEW SEASON NEW STYLE',
+            desc: 'JANGAN LEWATKAN KOLEKSI SEASON MUSIM DINGIN KAMI!',
+            harga: 20000,
+            discount: 10,
+            hargaDiscount: 5000,
+            image: '#737373',
+            href: '#',
+        },
+        {
+            id: 3,
+            title: 'NEW SEASON NEW STYLE',
+            desc: 'JANGAN LEWATKAN KOLEKSI SEASON MUSIM DINGIN KAMI!',
+            harga: 20000,
+            discount: 10,
+            hargaDiscount: 5000,
+            image: '#737373',
+            href: '#',
+        },
+        {
+            id: 3,
+            title: 'NEW SEASON NEW STYLE',
+            desc: 'JANGAN LEWATKAN KOLEKSI SEASON MUSIM DINGIN KAMI!',
+            harga: 20000,
+            discount: 10,
+            hargaDiscount: 5000,
+            image: '#737373',
+            href: '#',
+        },
+        {
+            id: 3,
+            title: 'NEW SEASON NEW STYLE',
+            desc: 'JANGAN LEWATKAN KOLEKSI SEASON MUSIM DINGIN KAMI!',
+            harga: 20000,
+            discount: 10,
+            hargaDiscount: 5000,
+            image: '#737373',
+            href: '#',
+        },
     ]
 
     return (
         <Swiper
             direction={'horizontal'}
-            slidesPerView={2}
-            spaceBetween={-50}
+            slidesPerView={5}
+            spaceBetween={1}
             mousewheel={{
                 forceToAxis: true,
                 releaseOnEdges: true,
@@ -56,42 +96,38 @@ const SwiperHorizontal = () => {
             className="mySwiper swiper2">
             {dataFlashSales.map(data => (
                 <SwiperSlide key={data.id}>
-                    <CardRow>
-                        <div className="flex flex-row items-center">
-                            <div className="flex justify-center">
+                    <CardCol>
+                        <div className="inline-flex flex-col items-start justify-start p-3">
+                            <div className="">
                                 <img
                                     src="/logo.png"
                                     alt="logo"
-                                    className="max-w-[150px] max-h-[125px] "
+                                    className="w-[100px] "
                                 />
                             </div>
-                            <div className="px-4 py-4">
-                                <div className="font-bold text-xl mb-2">
-                                    {data.title}
+                            <div className="font-bold text-base mt-1 text-slate-800">
+                                {data.title}
+                            </div>
+                            <p className="text-gray-700 text-sm">{data.desc}</p>
+                            <span className="text-lg font-bold">
+                                Rp {data.harga}
+                            </span>
+                            <div className="flex flex-row flex-nowrap items-center">
+                                <div className="badge rounded-[5px] p-3 bg-red-500 border-hidden text-white font-bold">
+                                    {data.discount}%
                                 </div>
-                                <p className="text-gray-700 text-base">
-                                    {data.desc}
-                                </p>
-                                <span className="text-lg font-bold">
-                                    Rp {data.harga}
+                                <span className="text-xs font-light line-through mx-2">
+                                    Rp {data.hargaDiscount}
                                 </span>
-                                <div className="flex flex-row flex-nowrap items-center">
-                                    <div className="badge rounded-[5px] p-3 bg-red-500 border-hidden text-white font-bold">
-                                        {data.discount}%
-                                    </div>
-                                    <span className="text-xs font-light line-through mx-2">
-                                        Rp {data.hargaDiscount}
-                                    </span>
-                                </div>
-                                <div className="flex flex-row">
-                                    <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-sm mt-3">
-                                        ADD TO CART
-                                    </button>
-                                    <HrefPusher>DETAIL</HrefPusher>
-                                </div>
+                            </div>
+                            <div className="flex flex-row">
+                                <button className="bg-red-500 hover:bg-red-700 text-white text-sm font-bold px-2 rounded-sm mt-3">
+                                    ADD TO CART
+                                </button>
+                                <HrefPusher>DETAIL</HrefPusher>
                             </div>
                         </div>
-                    </CardRow>
+                    </CardCol>
                 </SwiperSlide>
             ))}
         </Swiper>

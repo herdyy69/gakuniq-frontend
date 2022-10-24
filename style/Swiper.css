@@ -1,11 +1,11 @@
 .swiper {
   width: 100vw;
-  height: 100vh;
+  height: 120vh;
 }
 
 .swiper2 {
-  width: 99vw;
-  height: 50vh;
+  width: 95vw;
+  height: auto;
 }
 .swiper3 {
   width: 99vw;

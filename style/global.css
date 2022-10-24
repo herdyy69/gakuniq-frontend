@@ -34,3 +34,35 @@
   .custom-radio input:checked + .radio-btn {
     border: 2px solid #000;
   }
+  
+  .myAnimate {
+    animation: mymove 500ms ease-in-out;
+  }
+
+  @keyframes mymove {
+    0% {
+      transform: translateX(-160px);
+    }
+    
+    100% {
+      transform: translateX(0px);
+    }
+   
+  }
+
+  .swiperflashsale {
+    display: flex;
+    width: 350px;
+    scroll-snap-type: mandatory;
+    scroll-behavior: smooth;
+    scroll-padding: 25px;
+    column-gap: 20px;
+  }
+  .cardx {
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+    padding: 30px;
+  }
+
+
+

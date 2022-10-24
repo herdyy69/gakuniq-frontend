@@ -76,7 +76,7 @@ const Keranjang = () => {
                                 <div
                                     className="md:w-[50vw] bg-transparent m-1 p-2"
                                     key={data.id}>
-                                    <div className="flex flex-row">
+                                    <div className="flex flex-row flex-wrap">
                                         <div className="flex bg-black w-[20rem] h-[15rem]"></div>
                                         <div className="flex flex-col mx-5">
                                             <h1 className="text-lg md:text-2xl font-bold">
@@ -128,10 +128,10 @@ const Keranjang = () => {
                         </div>
                         <div className="flex flex-col">
                             <div
-                                className="md:w-[40vw] bg-transparent m-1 p-2"
+                                className="w-[full] bg-transparent m-1 p-2"
                                 key={data.id}>
                                 <div className="flex flex-col">
-                                    <div className="flex flex-col border-2 p-5">
+                                    <div className="flex flex-col border-2 rounded-lg p-5">
                                         <h1 className="text-lg md:text-lg font-bold">
                                             RINGKASAN PESANAN {totalQty} PRODUCT
                                         </h1>

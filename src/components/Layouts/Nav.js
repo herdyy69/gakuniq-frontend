@@ -7,6 +7,12 @@ import {
     HoverCategoryWanita,
     HoverCategoryAnak,
 } from '../common/HoverCategory'
+import {
+    AiOutlineUser,
+    AiOutlineShoppingCart,
+    AiOutlineMenu,
+} from 'react-icons/ai'
+import { GiSelfLove } from 'react-icons/gi'
 
 const Nav = () => {
     const router = useRouter()
@@ -102,31 +108,37 @@ const Nav = () => {
                         </div>
 
                         <div className="flex flex-wrap items-center">
-                            <NavLink
+                            {/* <NavLink
                                 href={{
                                     pathname: '/nav-item/cari',
                                 }}
                                 active={router.pathname === '/nav-item/cari'}>
                                 Cari
-                            </NavLink>
-                            <NavLink
-                                href={{
-                                    pathname: '/nav-item/wishlist',
-                                }}
-                                active={
-                                    router.pathname === '/nav-item/wishlist'
-                                }>
-                                Wishlist
-                            </NavLink>
-                            <NavLink
-                                href={{
-                                    pathname: '/nav-item/keranjang',
-                                }}
-                                active={
-                                    router.pathname === '/nav-item/keranjang'
-                                }>
-                                Keranjang
-                            </NavLink>
+                            </NavLink> */}
+                            {/* form search */}
+                            <div className="relative mx-2">
+                                <input
+                                    type="search"
+                                    className="bg-transparent rounded-md w-[300px] h-[40px] pl-10 pr-4 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+                                    placeholder="Cari Produk"
+                                />
+                                <div className="absolute top-1/2 left-3 transform -translate-y-1/2">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        className="h-6 w-6 text-gray-500"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor">
+                                        <path
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            strokeWidth={2}
+                                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                                        />
+                                    </svg>
+                                </div>
+                            </div>
+                            {/* end form search */}
                             <NavLink
                                 href={{
                                     pathname: '/akun',
@@ -136,7 +148,33 @@ const Nav = () => {
                                     router.pathname === '/akun/voucher' ||
                                     router.pathname === '/akun/topup'
                                 }>
-                                Akun
+                                <AiOutlineUser className="text-2xl" />
+                            </NavLink>
+
+                            <NavLink
+                                href={{
+                                    pathname: '/nav-item/wishlist',
+                                }}
+                                active={
+                                    router.pathname === '/nav-item/wishlist'
+                                }>
+                                <GiSelfLove className="text-2xl" />
+                            </NavLink>
+                            <NavLink
+                                href={{
+                                    pathname: '/nav-item/keranjang',
+                                }}
+                                active={
+                                    router.pathname === '/nav-item/keranjang'
+                                }>
+                                <AiOutlineShoppingCart className="text-2xl" />
+                            </NavLink>
+                            <NavLink
+                                href={{
+                                    pathname: '/menu',
+                                }}
+                                active={router.pathname === '/menu'}>
+                                <AiOutlineMenu className="text-2xl" />
                             </NavLink>
                         </div>
                     </div>

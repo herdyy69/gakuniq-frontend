@@ -17,24 +17,23 @@ const Beranda = () => {
                 <div>
                     <SwiperVertical />
                 </div>
-                <div className="flex flex-col mt-4 items-center">
-                    <div className="my-0 mx-5">
+                <div className="flex flex-col mt-4 items-center border-2 m-4 p-4">
+                    <div className="mb-2">
                         <h1 className="text-2xl text-slate-800">
                             ON FLASH SALE!
                         </h1>
                         <span className="font-mono text-lg">20 oct 2022</span>
                     </div>
-                    <div className="px-5 flex items-center mt-[-40px]">
+                    <div className="px-5 flex items-center">
                         <SwiperHorizontal />
                     </div>
                 </div>
                 <div className="my-6 mx-4 py-4 border-2">
-                    <h1 className="text-2xl text-black font-bold mb-3 p-3 rounded-lg glass flex justify-center uppercase mx-2">
+                    <h1 className="text-xl text-black mb-3 p-3 rounded-lg glass flex justify-center uppercase mx-2">
                         Berdasarkan referensimu!
                     </h1>
                     <div className="flex flex-row flex-wrap justify-start items-start overflow-hidden">
                         <References />
-                        <CardRow />
                     </div>
                 </div>
             </div>
