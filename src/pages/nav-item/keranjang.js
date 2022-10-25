@@ -1,51 +1,26 @@
-import NavLink from '@/components/NavLink'
 import React, { useState } from 'react'
 import { useRouter } from 'next/router'
 import AppLayout from '@/components/Layouts/AppLayout'
 import Head from 'next/head'
 import Link from 'next/link'
-import Image from 'next/image'
-import Select from 'react-select'
+import { BsTrash } from 'react-icons/bs'
 
 const Keranjang = () => {
     const router = useRouter()
 
-    const data = [
+    var onDiscount = true
+
+    const DummyData = [
         {
             id: 1,
-            product_title: 'Costanza Bendelow',
-            harga: 10000,
-            qty: 1,
-            color: 'Goldenrod',
-            size: 'M',
-            type: 'BFZ',
-            image: 'http://dummyimage.com/82x92.png/5fa2dd/ffffff',
         },
         {
             id: 2,
-            product_title: 'Costanza Bendelow',
-            harga: 20000,
-            qty: 3,
-            color: 'Goldenrod',
-            size: 'M',
-            type: 'BFZ',
-            image: 'http://dummyimage.com/82x92.png/5fa2dd/ffffff',
         },
     ]
 
-    const totalQty = data.reduce((acc, item) => {
-        return acc + item.qty
-    }, 0)
-    const totalHarga = data.reduce((acc, item) => {
-        return acc + item.harga * item.qty
-    }, 0)
-    const ppn = totalHarga * 0.1
-    const totalHargaPpn = totalHarga - ppn
-
-    var onCart = data.length
     return (
         <AppLayout
-            title=<h1 className="text-2xl font-bold">KERANJANG BELANJA</h1>
             subTitle={
                 <div className="bg-[#FFFFFF] shadow mt-3">
                     <div className="max-w-7xl mx-auto py-0 px-0 shadow">
@@ -66,139 +41,157 @@ const Keranjang = () => {
             }
             headerX="TRUE"
             header={
-                <>
-                    <span className="text-sm font-extrabold">
-                        {onCart} PRODUK
-                    </span>
-                    <div className="flex flex-row flex-wrap md:flex-nowrap sm:flex-row">
-                        <div className="flex flex-col">
-                            {data.map(data => (
-                                <div
-                                    className="md:w-[50vw] bg-transparent m-1 p-2"
-                                    key={data.id}>
-                                    <div className="flex flex-row flex-wrap">
-                                        <div className="flex bg-black w-[20rem] h-[15rem]"></div>
-                                        <div className="flex flex-col mx-5">
-                                            <h1 className="text-lg md:text-2xl font-bold">
-                                                {data.product_title}
-                                                <NavLink
-                                                    href={{
-                                                        pathname: '/transaksi',
-                                                    }}
-                                                    active={
-                                                        router.pathname ===
-                                                        '/transaksi'
-                                                    }>
-                                                    <span className="text-2xl text-red-600 font-bold">
-                                                        X
-                                                    </span>
-                                                </NavLink>
-                                            </h1>
-                                            <span className="text-xs md:text-sm font-extralight text-[#7a7a7a]">
-                                                KODE 12312321212
+                <div>
+                    <h1 className="text-2xl font-bold text-slate-800">
+                        Keranjang Belanja
+                    </h1>
+                </div>
+            }>
+            <div className="mx-auto my-[2rem] max-w-[80rem]">
+                <div className="flex flex-col md:flex-row">
+                    <div className="flex flex-col">
+                        <div className="inline-flex flex-row items-center justify-between min-w-[50vw] border-b-4 rounded-lg">
+                            <span className="text-sm font-bold text-slate-800">
+                                <label className="inline-flex items-center">
+                                    <input
+                                        type="checkbox"
+                                        className="checkbox checkbox-md"
+                                    />
+                                    <span className="ml-2 opacity-[0.7]">
+                                        Pilih Semua
+                                    </span>
+                                </label>
+                            </span>
+                            <span className="text-sm font-bold text-slate-800">
+                                <label className="inline-flex items-center">
+                                    <Link
+                                        href={{
+                                            pathname: '',
+                                        }}>
+                                        <a className="ml-2 text-red-700 opacity-[0.9]">
+                                            Hapus Semua
+                                        </a>
+                                    </Link>
+                                </label>
+                            </span>
+                        </div>
+                        <div className="inline-flex flex-col items-center justify-center min-w-[50vw] min-h-[30vh]">
+                            {DummyData.map(item => (
+                                <div className="flex items-center justify-between w-full h-full p-4 mt-2 bg-slate-200 rounded-lg hover:bg-slate-500">
+                                    <div className="flex flex-row">
+                                        <span className="text-sm font-bold text-slate-800 my-auto mr-2">
+                                            <label className="flex">
+                                                <input
+                                                    type="checkbox"
+                                                    className="checkbox checkbox-md"
+                                                />
+                                            </label>
+                                        </span>
+                                        <div className="flex flex-row justify-items-start justify-center mx-auto">
+                                            <img
+                                                src="https://i.ibb.co/0nQqZ1t/Rectangle-1.png"
+                                                alt="Rectangle-1"
+                                                border="0"
+                                                className="max-w-[90px] max-h-[90px] rounded-lg"
+                                            />
+                                            <span className="all-describe mx-2 flex-1">
+                                                <p className="text-lg font-bold text-slate-800">
+                                                    Kemeja Pria
+                                                </p>
+                                                <p className="text-xs font-normal text-slate-800">
+                                                    New, Blue, M
+                                                </p>
+                                                <p className="text-xs font-normal text-slate-800">
+                                                    1 x Rp 200.000
+                                                </p>
+                                                <p className="text-sm font-bold text-slate-800 mt-2">
+                                                    {onDiscount === true ? (
+                                                        <>
+                                                            <span className="bg-red-800 rounded-md px-2 py-1 text-white text-xs">
+                                                                90% OFF
+                                                            </span>
+                                                            <span className="mx-2 line-through text-xs text-slate-800">
+                                                                Rp 200.000
+                                                            </span>
+                                                            <span className=" text-slate-800">
+                                                                Rp 20.000
+                                                            </span>
+                                                        </>
+                                                    ) : (
+                                                        <span className=" text-slate-800">
+                                                            Rp 20.000
+                                                        </span>
+                                                    )}
+                                                </p>
                                             </span>
-                                            <span className="text-xs md:text-sm font-extralight">
-                                                WARNA {data.color}
-                                            </span>
-                                            <span className="text-xs md:text-sm font-extralight">
-                                                UKURAN {data.size}
-                                            </span>
-                                            <span className="text-xs md:text-sm font-extralight text-[#7a7a7a]">
-                                                New, Limited Store
-                                            </span>
-                                            <h2 className="text-lg font-bold mt-3">
-                                                Rp {data.harga}
-                                            </h2>
-                                            <div className="flex items-center justify-between">
-                                                <h1 className="text-sm md:text-lg font-bold">
-                                                    JUMLAH
-                                                </h1>
-                                                <h1 className="text-sm md:text-lg font-bold border-2 px-2">
-                                                    {data.qty}
-                                                </h1>
-                                            </div>
-                                            <h2 className="text-lg font-bold mt-3">
-                                                SUBTOTAL Rp
-                                                {data.harga * data.qty}
-                                            </h2>
                                         </div>
                                     </div>
+                                    <span className="trash-icon text-2xl text-slate-800 flex-none gap-2">
+                                        <Link
+                                            href={{
+                                                pathname: '',
+                                            }}>
+                                            <a className="text-2xl text-red-700 opacity-[0.9] btn btn-ghost">
+                                                <BsTrash size={20} />
+                                            </a>
+                                        </Link>
+                                    </span>
                                 </div>
                             ))}
                         </div>
-                        <div className="flex flex-col">
-                            <div
-                                className="w-[full] bg-transparent m-1 p-2"
-                                key={data.id}>
-                                <div className="flex flex-col">
-                                    <div className="flex flex-col border-2 rounded-lg p-5">
-                                        <h1 className="text-lg md:text-lg font-bold">
-                                            RINGKASAN PESANAN {totalQty} PRODUCT
-                                        </h1>
-                                        <div className="flex justify-between my-2">
-                                            <span className="text-xs md:text-sm font-extralight text-[#7a7a7a]">
-                                                SUBTOTAL PRODUCT
-                                            </span>
-                                            <span className="text-xs md:text-sm font-extralight text-[#7a7a7a]">
-                                                Rp {totalHarga}
-                                            </span>
-                                        </div>
-                                        <div className="flex justify-between my-2">
-                                            <h1 className="text-lg md:text-lg font-bold">
-                                                SUBTOTAL
-                                            </h1>
-                                            <h1 className="text-lg md:text-lg font-bold">
-                                                Rp {totalHarga}
-                                            </h1>
-                                        </div>
-                                        <div className="flex justify-between my-2">
-                                            <span className="text-xs md:text-sm font-extralight text-[#7a7a7a]">
-                                                TERMASUK PPN
-                                            </span>
-                                            <span className="text-xs md:text-sm font-extralight text-[#7a7a7a]">
-                                                Rp {ppn}
-                                            </span>
-                                        </div>
-                                        <div className="flex justify-between my-2">
-                                            <h1 className="text-lg md:text-lg font-bold">
-                                                TOTAL PESANAN
-                                            </h1>
-                                            <h1 className="text-lg md:text-lg font-bold">
-                                                Rp {totalHargaPpn}
-                                            </h1>
-                                        </div>
-                                    </div>
-
-                                    <div className="flex flex-col border-y-2 py-3 mt-5">
-                                        <NavLink
-                                            href={{
-                                                pathname: '/checkout',
-                                            }}
-                                            active={
-                                                router.pathname === '/checkout'
-                                            }>
-                                            <button className="btn w-full">
-                                                LANJUT KE PEMBAYARAN
-                                            </button>
-                                        </NavLink>
-                                        <NavLink
-                                            href={{
-                                                pathname: '/katalog',
-                                            }}
-                                            active={
-                                                router.pathname === '/katalog'
-                                            }>
-                                            <button className="btn w-full">
-                                                LANJUT BELANJA
-                                            </button>
-                                        </NavLink>
-                                    </div>
+                    </div>
+                    <div className="flex flex-col w-full mt-4 md:mt-0 md:ml-4">
+                        <div className="flex flex-col w-full h-auto p-4 bg-slate-200 rounded-lg">
+                            <div className="flex flex-col w-full h-full">
+                                <h1 className="text-2xl font-bold text-slate-800 mb-2">
+                                    Ringkasan Belanja
+                                </h1>
+                                <div className="flex flex-row items-center justify-between">
+                                    <p className="text-lg font-normal text-slate-800">
+                                        Total Harga
+                                    </p>
+                                    <p className="text-lg font-bold text-slate-800">
+                                        Rp 20.000
+                                    </p>
                                 </div>
+                                <div className="flex flex-row items-center justify-between">
+                                    <p className="text-lg font-normal text-slate-800">
+                                        Biaya Lainnya
+                                    </p>
+                                    <p className="text-lg font-bold text-slate-800">
+                                        Rp 0
+                                    </p>
+                                </div>
+                                <span className="flex flex-row items-center justify-between mt-2">
+                                    <hr className="w-full border-1 border-slate-400" />
+                                </span>
+                                <div className="flex flex-row items-center justify-between border-t-2 border-x-zinc-900">
+                                    <p className="text-lg font-normal text-slate-800">
+                                        Total Harga
+                                    </p>
+                                    <p className="text-lg font-bold text-slate-800">
+                                        Rp 20.000
+                                    </p>
+                                </div>
+                                <span className="flex flex-col items-center justify-between mt-2">
+                                    <Link
+                                        href={{
+                                            pathname: '/checkout',
+                                        }}>
+                                        <button className="btn w-full py-2 text-lg font-bold text-white bg-slate-800 rounded-lg">
+                                            Lanjutkan Pembayaran
+                                        </button>
+                                    </Link>
+                                    <button className="btn w-full py-2 text-lg font-bold text-slate-800 bg-slate-200 rounded-lg glass">
+                                        Lanjutkan Belanja
+                                    </button>
+                                </span>
                             </div>
                         </div>
                     </div>
-                </>
-            }>
+                </div>
+            </div>
+
             <Head>
                 <title>GakUniq - Keranjang..</title>
             </Head>

@@ -1,6 +1,5 @@
 import Nav from '@/components/Layouts/Nav'
 import Footer from './Footer'
-import NavLink from '@/components/NavLink'
 import { useRouter } from 'next/router'
 
 const AppLayout = ({ header, children, ...props }) => {

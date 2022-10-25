@@ -1,7 +1,7 @@
 import React from 'react'
 import { CardCol } from '../card/cardCol'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { HrefPusherDetail, HrefPusherCart } from '../hrefPusher'
+import { HrefPusherDetail, HrefPusherwishlist } from '../hrefPusher'
 import 'swiper/css'
 import 'swiper/css/pagination'
 import 'swiper/css/bundle'
@@ -85,7 +85,9 @@ const SwiperHorizontal = () => {
                                 </span>
                             </div>
                             <div className="flex flex-col md:flex-row">
-                                <HrefPusherCart>ADD TO CART</HrefPusherCart>
+                                <HrefPusherwishlist>
+                                    ADD TO WISHLIST
+                                </HrefPusherwishlist>
                                 <HrefPusherDetail href={data.id}>
                                     DETAIL
                                 </HrefPusherDetail>

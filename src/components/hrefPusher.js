@@ -15,7 +15,7 @@ export const HrefPusherDetail = ({ children, ...props }) => {
             href={{
                 pathname: '/katalog/detail-product/',
             }}>
-            <button className="bg-transparent glass hover:bg-[#e5e7eb] text-slate-800 text-sm font-bold px-3 py-2 rounded-sm mt-3">
+            <button className="bg-transparent glass hover:bg-[#78716c] text-slate-800 text-sm font-bold px-3 py-2 rounded-sm mt-3">
                 {children}
             </button>
         </Link>
@@ -30,7 +30,7 @@ export const HrefPusherwishlist = ({ children, ...props }) => {
             }}>
             <button
                 onClick={() => handleAddToCart()}
-                className="bg-transparent glass hover:bg-[#7dd3fc] text-slate-800 text-sm font-bold px-3 py-2 rounded-sm mt-3">
+                className="bg-transparent glass hover:bg-[#57534e] text-slate-800 text-sm font-bold px-3 py-2 rounded-sm mt-3">
                 {children}
             </button>
         </Link>

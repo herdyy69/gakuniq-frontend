@@ -87,21 +87,15 @@ const Nav = props => {
                                         PRIA
                                     </span>
                                 </NavLink>
-                                {/* <NavLink
+                                <NavLink
                                     href={{
-                                        pathname: '/nav-item/cari',
+                                        pathname: '/katalog',
                                     }}
-                                    active={
-                                        router.pathname === '/nav-item/cari'
-                                    }>
-                                    <span
-                                        onMouseEnter={() => {
-                                            setDataCategory(HoverCategoryAnak())
-                                        }}
-                                        className="text-[12px] font-extrabold px-1">
-                                        ANAK
+                                    active={router.pathname === '/katalog'}>
+                                    <span className="text-[12px] font-extrabold px-1">
+                                        SEMUA
                                     </span>
-                                </NavLink> */}
+                                </NavLink>
                             </div>
                         </div>
 

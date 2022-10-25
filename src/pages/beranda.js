@@ -4,11 +4,10 @@ import Head from 'next/head'
 import SwiperVertical from '@/components/swiperJs/swiperVertical'
 import SwiperHorizontal from '@/components/swiperJs/swiperHorizontal'
 import { References } from '@/components/SectionRefereces/References'
-import { CardRow } from '@/components/card/cardRow'
 
-const Beranda = props => {
+const Beranda = () => {
     return (
-        <AppLayout header={''} values={props.val}>
+        <AppLayout header={''}>
             <Head>
                 <title>GakUniq - Beranda</title>
             </Head>
@@ -22,11 +21,9 @@ const Beranda = props => {
                 <span className="bg-slate-200 h-[12px]"></span>
                 <div className="flex flex-row items-center bg-slate-300 w-auto h-auto py-3 shadow-md">
                     <div className="flex flex-col items-center justify-center border-2 rounded-md min-h-[40vh] m-4 p-4">
-                        <div className="mb-2">
-                            <h1 className="text-2xl font-bold text-slate-500">
-                                ON FLASH SALE!
-                            </h1>
-                        </div>
+                        <h1 className="text-2xl font-bold text-slate-500">
+                            ON <br /> FLASH <br /> SALE!
+                        </h1>
                     </div>
                     <div className="flex items-center">
                         <SwiperHorizontal />

@@ -1,120 +1,26 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useRouter } from 'next/router'
 import AppLayout from '@/components/Layouts/AppLayout'
 import Head from 'next/head'
 import Link from 'next/link'
-import Image from 'next/image'
+import { BsTrash } from 'react-icons/bs'
 
 const Wishlist = () => {
-    const data = [
+    const router = useRouter()
+
+    var onDiscount = true
+
+    const DummyData = [
         {
             id: 1,
-            product_title: 'Costanza Bendelow',
-            sub_title: 'Games',
-            color: 'Goldenrod',
-            size: 'M',
-            type: 'BFZ',
-            price: 96,
-            image: 'http://dummyimage.com/82x92.png/5fa2dd/ffffff',
         },
         {
             id: 2,
-            product_title: 'Gaelan Gilardone',
-            sub_title: 'Games',
-            color: 'Orange',
-            size: 'M',
-            type: 'WDR',
-            price: 35,
-            image: 'http://dummyimage.com/90x83.png/dddddd/000000',
-        },
-        {
-            id: 3,
-            product_title: 'Rancell Rogan',
-            sub_title: 'Health',
-            color: 'Violet',
-            size: 'M',
-            type: 'ATVI',
-            price: 59,
-            image: 'http://dummyimage.com/93x99.png/5fa2dd/ffffff',
-        },
-        {
-            id: 4,
-            product_title: 'Wilek Crallan',
-            sub_title: 'Industrial',
-            color: 'Goldenrod',
-            size: '2XL',
-            type: 'AEB',
-            price: 41,
-            image: 'http://dummyimage.com/85x98.png/5fa2dd/ffffff',
-        },
-        {
-            id: 5,
-            product_title: 'Thurstan Eam',
-            sub_title: 'Garden',
-            color: 'Goldenrod',
-            size: '3XL',
-            type: 'TGLS',
-            price: 17,
-            image: 'http://dummyimage.com/100x89.png/ff4444/ffffff',
-        },
-        {
-            id: 6,
-            product_title: 'Wallis Pifford',
-            sub_title: 'Shoes',
-            color: 'Mauv',
-            size: '3XL',
-            type: 'JAZZ',
-            price: 71,
-            image: 'http://dummyimage.com/92x94.png/cc0000/ffffff',
-        },
-        {
-            id: 7,
-            product_title: 'Stacey Defont',
-            sub_title: 'Tools',
-            color: 'Maroon',
-            size: 'S',
-            type: 'PSA^W',
-            price: 10,
-            image: 'http://dummyimage.com/92x98.png/5fa2dd/ffffff',
-        },
-        {
-            id: 8,
-            product_title: 'Emelen Gerraty',
-            sub_title: 'Movies',
-            color: 'Red',
-            size: '3XL',
-            type: 'CNCE',
-            price: 83,
-            image: 'http://dummyimage.com/100x84.png/dddddd/000000',
-        },
-        {
-            id: 9,
-            product_title: 'Phil Mazdon',
-            sub_title: 'Industrial',
-            color: 'Indigo',
-            size: 'M',
-            type: 'HASI',
-            price: 20,
-            image: 'http://dummyimage.com/80x86.png/dddddd/000000',
-        },
-        {
-            id: 10,
-            product_title: 'Ava Linstead',
-            sub_title: 'Electronics',
-            color: 'Green',
-            size: '2XL',
-            type: 'RP',
-            price: 45,
-            image: 'http://dummyimage.com/86x88.png/5fa2dd/ffffff',
         },
     ]
 
-    var number = data.length
-
-    console.log(data)
-
     return (
         <AppLayout
-            title="WISHLIST"
             subTitle={
                 <div className="bg-[#FFFFFF] shadow mt-3">
                     <div className="max-w-7xl mx-auto py-0 px-0 shadow">
@@ -133,53 +39,156 @@ const Wishlist = () => {
                     </div>
                 </div>
             }
+            headerX="TRUE"
             header={
-                <>
-                    <span className="text-sm font-extrabold">
-                        {number} PRODUK
-                    </span>
-                    <div className="flex flex-wrap flex-col sm:flex-row">
-                        {data.map(data => (
-                            <div
-                                className="flex w-4/5 sm:w-auto bg-slate-300 m-1 p-2"
-                                key={data.id}>
-                                <div className="flex flex-col sm:flex-row items-start">
-                                    <div className="flex-shrink-0 flex">
-                                        <Image
-                                            src="/logo.png"
-                                            width={70}
-                                            height={70}
-                                        />
-                                    </div>
-                                    <span className="mx-1 "></span>
-                                    <div className="flex flex-col overflow-clip z-10">
-                                        <span className="text-[9px] font-extrabold flex ">
-                                            {data.product_title}
-                                        </span>
-                                        <span className="text-[8.5px] font-extralight">
-                                            {data.sub_title}
-                                        </span>
-                                        <span className="text-[8.5px] font-bold">
-                                            Warna : {data.color}
-                                        </span>
-                                        <span className="text-[6.5px] font-bold">
-                                            UKURAN : {data.type}
-                                        </span>
-                                        <span className="text-[6px] font-extralight">
-                                            NEW
-                                        </span>
-                                        <span className="text-[9px] font-extrabold flex ">
-                                            Rp. {data.price}
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </>
+                <div>
+                    <h1 className="text-2xl font-bold text-slate-800">
+                        Wishlist
+                    </h1>
+                </div>
             }>
+            <div className="mx-auto my-[2rem] max-w-[80vw]">
+                <div className="flex flex-col md:flex-row">
+                    <div className="flex flex-col">
+                        <div className="inline-flex flex-row items-center justify-between min-w-[50vw] border-b-4 rounded-lg">
+                            <span className="text-sm font-bold text-slate-800">
+                                <label className="inline-flex items-center">
+                                    <input
+                                        type="checkbox"
+                                        className="checkbox checkbox-md"
+                                    />
+                                    <span className="ml-2 opacity-[0.7]">
+                                        Pilih Semua
+                                    </span>
+                                </label>
+                            </span>
+                            <span className="text-sm font-bold text-slate-800">
+                                <label className="inline-flex items-center">
+                                    <Link
+                                        href={{
+                                            pathname: '',
+                                        }}>
+                                        <a className="ml-2 text-red-700 opacity-[0.9]">
+                                            Hapus Semua
+                                        </a>
+                                    </Link>
+                                </label>
+                            </span>
+                        </div>
+                        <div className="inline-flex flex-col items-center justify-center min-w-[80vw] min-h-[30vh]">
+                            {DummyData.map(item => (
+                                <div className="flex items-center justify-between w-full h-full p-4 mt-2 bg-slate-200 rounded-lg hover:bg-slate-500">
+                                    <div className="flex flex-row">
+                                        <span className="text-sm font-bold text-slate-800 my-auto mr-2">
+                                            <label className="flex">
+                                                <input
+                                                    type="checkbox"
+                                                    className="checkbox checkbox-md"
+                                                />
+                                            </label>
+                                        </span>
+                                        <div className="flex flex-row justify-items-start justify-center mx-auto">
+                                            <img
+                                                src="https://i.ibb.co/0nQqZ1t/Rectangle-1.png"
+                                                alt="Rectangle-1"
+                                                border="0"
+                                                className="max-w-[90px] max-h-[90px] rounded-lg"
+                                            />
+                                            <span className="all-describe mx-2 flex-1">
+                                                <p className="text-lg font-bold text-slate-800">
+                                                    Kemeja Pria
+                                                </p>
+                                                <p className="text-xs font-normal text-slate-800">
+                                                    New, Blue, M
+                                                </p>
+                                                <p className="text-xs font-normal text-slate-800">
+                                                    1 x Rp 200.000
+                                                </p>
+                                                <p className="text-sm font-bold text-slate-800 mt-2">
+                                                    {onDiscount === true ? (
+                                                        <>
+                                                            <span className="bg-red-800 rounded-md px-2 py-1 text-white text-xs">
+                                                                90% OFF
+                                                            </span>
+                                                            <span className="mx-2 line-through text-xs text-slate-800">
+                                                                Rp 200.000
+                                                            </span>
+                                                            <span className=" text-slate-800">
+                                                                Rp 20.000
+                                                            </span>
+                                                        </>
+                                                    ) : (
+                                                        <span className=" text-slate-800">
+                                                            Rp 20.000
+                                                        </span>
+                                                    )}
+                                                </p>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <span className="trash-icon text-2xl text-slate-800 flex-none gap-2">
+                                        <Link
+                                            href={{
+                                                pathname: '',
+                                            }}>
+                                            <a className="text-2xl text-red-700 opacity-[0.9] btn btn-ghost">
+                                                <BsTrash size={20} />
+                                            </a>
+                                        </Link>
+                                    </span>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                    {/* <div className="flex flex-col w-full mt-4 md:mt-0 md:ml-4">
+                        <div className="flex flex-col w-full h-auto p-4 bg-slate-200 rounded-lg">
+                            <div className="flex flex-col w-full h-full">
+                                <h1 className="text-2xl font-bold text-slate-800 mb-2">
+                                    Ringkasan Belanja
+                                </h1>
+                                <div className="flex flex-row items-center justify-between">
+                                    <p className="text-lg font-normal text-slate-800">
+                                        Total Harga
+                                    </p>
+                                    <p className="text-lg font-bold text-slate-800">
+                                        Rp 20.000
+                                    </p>
+                                </div>
+                                <div className="flex flex-row items-center justify-between">
+                                    <p className="text-lg font-normal text-slate-800">
+                                        Biaya Lainnya
+                                    </p>
+                                    <p className="text-lg font-bold text-slate-800">
+                                        Rp 0
+                                    </p>
+                                </div>
+                                <span className="flex flex-row items-center justify-between mt-2">
+                                    <hr className="w-full border-1 border-slate-400" />
+                                </span>
+                                <div className="flex flex-row items-center justify-between border-t-2 border-x-zinc-900">
+                                    <p className="text-lg font-normal text-slate-800">
+                                        Total Harga
+                                    </p>
+                                    <p className="text-lg font-bold text-slate-800">
+                                        Rp 20.000
+                                    </p>
+                                </div>
+                                <span className="flex flex-col items-center justify-between mt-2">
+                                    <button className="btn w-full py-2 text-lg font-bold text-white bg-slate-800 rounded-lg">
+                                        Lanjutkan Pembayaran
+                                    </button>
+                                    <button className="btn w-full py-2 text-lg font-bold text-slate-800 bg-slate-200 rounded-lg glass">
+                                        Lanjutkan Belanja
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div> */}
+                </div>
+            </div>
+
             <Head>
-                <title>GakUniq - Wishlist..</title>
+                <title>GakUniq - Wislist..</title>
             </Head>
         </AppLayout>
     )
