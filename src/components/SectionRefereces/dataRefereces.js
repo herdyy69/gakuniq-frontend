@@ -7,7 +7,7 @@ export const DataRefereces = Props => {
 
     const dataHover = () => {
         return (
-            <div className="rounded-xl border-2 max-w-[10rem] max-h-[full]  bg-transparent shadow-lg myAnimate ml-[-0.25rem] mt-[0.25rem]">
+            <div className="rounded-xl border-2 max-w-[10rem] min-h-[40vh]  bg-transparent shadow-lg myAnimate ml-[-0.25rem] mt-[0.25rem]">
                 <div className="m-4">
                     <div className="px-0 py-0">
                         <p className="text-gray-700 text-base">{Props.desc}</p>

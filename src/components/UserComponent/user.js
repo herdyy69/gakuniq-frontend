@@ -10,7 +10,7 @@ const User = ({ children }) => {
 
     const dataHeader = () => {
         return (
-            <div className="flex flex-row flex-wrap items-start justify-center">
+            <div className="flex flex-row flex-wrap md:flex-nowrap items-start justify-center">
                 <div className="flex mx-2">
                     <div className="bg-transparent min-w-[20rem] my-2 min-h-[20rem] rounded-md border-[2px] shadow-lg py-2">
                         <div className="flex flex-row items-center px-4 mt-5">

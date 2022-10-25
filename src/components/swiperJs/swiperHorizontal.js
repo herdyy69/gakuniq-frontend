@@ -1,7 +1,7 @@
 import React from 'react'
 import { CardCol } from '../card/cardCol'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { HrefPusher } from '../hrefPusher'
+import { HrefPusherDetail, HrefPusherCart } from '../hrefPusher'
 import 'swiper/css'
 import 'swiper/css/pagination'
 import 'swiper/css/bundle'
@@ -41,53 +41,15 @@ const SwiperHorizontal = () => {
             image: '#737373',
             href: '#',
         },
-        {
-            id: 3,
-            title: 'NEW SEASON NEW STYLE',
-            desc: 'JANGAN LEWATKAN KOLEKSI SEASON MUSIM DINGIN KAMI!',
-            harga: 20000,
-            discount: 10,
-            hargaDiscount: 5000,
-            image: '#737373',
-            href: '#',
-        },
-        {
-            id: 3,
-            title: 'NEW SEASON NEW STYLE',
-            desc: 'JANGAN LEWATKAN KOLEKSI SEASON MUSIM DINGIN KAMI!',
-            harga: 20000,
-            discount: 10,
-            hargaDiscount: 5000,
-            image: '#737373',
-            href: '#',
-        },
-        {
-            id: 3,
-            title: 'NEW SEASON NEW STYLE',
-            desc: 'JANGAN LEWATKAN KOLEKSI SEASON MUSIM DINGIN KAMI!',
-            harga: 20000,
-            discount: 10,
-            hargaDiscount: 5000,
-            image: '#737373',
-            href: '#',
-        },
-        {
-            id: 3,
-            title: 'NEW SEASON NEW STYLE',
-            desc: 'JANGAN LEWATKAN KOLEKSI SEASON MUSIM DINGIN KAMI!',
-            harga: 20000,
-            discount: 10,
-            hargaDiscount: 5000,
-            image: '#737373',
-            href: '#',
-        },
     ]
+
+    var data = 'test'
 
     return (
         <Swiper
             direction={'horizontal'}
             slidesPerView={5}
-            spaceBetween={1}
+            spaceBetween={10}
             mousewheel={{
                 forceToAxis: true,
                 releaseOnEdges: true,
@@ -108,7 +70,9 @@ const SwiperHorizontal = () => {
                             <div className="font-bold text-base mt-1 text-slate-800">
                                 {data.title}
                             </div>
-                            <p className="text-gray-700 text-sm">{data.desc}</p>
+                            <p className="text-slate-700 text-xs">
+                                {data.desc}
+                            </p>
                             <span className="text-lg font-bold">
                                 Rp {data.harga}
                             </span>
@@ -120,11 +84,11 @@ const SwiperHorizontal = () => {
                                     Rp {data.hargaDiscount}
                                 </span>
                             </div>
-                            <div className="flex flex-row">
-                                <button className="bg-red-500 hover:bg-red-700 text-white text-sm font-bold px-2 rounded-sm mt-3">
-                                    ADD TO CART
-                                </button>
-                                <HrefPusher>DETAIL</HrefPusher>
+                            <div className="flex flex-col md:flex-row">
+                                <HrefPusherCart>ADD TO CART</HrefPusherCart>
+                                <HrefPusherDetail href={data.id}>
+                                    DETAIL
+                                </HrefPusherDetail>
                             </div>
                         </div>
                     </CardCol>

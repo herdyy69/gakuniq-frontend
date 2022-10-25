@@ -14,14 +14,13 @@ import {
 } from 'react-icons/ai'
 import { GiSelfLove } from 'react-icons/gi'
 
-const Nav = () => {
+const Nav = props => {
     const router = useRouter()
     const [dataCategory, setDataCategory] = useState(false)
 
     const openLeave = () => {
         setDataCategory('')
     }
-
     return (
         <>
             <nav
@@ -58,11 +57,10 @@ const Nav = () => {
                             <div className="hidden md:flex flex-row flex-wrap items-center justify-center">
                                 <NavLink
                                     href={{
-                                        pathname: '/sub-category/wanita',
+                                        pathname: '/kategori/wanita',
                                     }}
                                     active={
-                                        router.pathname ===
-                                        '/sub-category/wanita'
+                                        router.pathname === '/kategori/wanita'
                                     }>
                                     <span
                                         onMouseEnter={() => {
@@ -76,10 +74,10 @@ const Nav = () => {
                                 </NavLink>
                                 <NavLink
                                     href={{
-                                        pathname: '/sub-category/pria',
+                                        pathname: '/kategori/pria',
                                     }}
                                     active={
-                                        router.pathname === '/sub-category/pria'
+                                        router.pathname === '/kategori/pria'
                                     }>
                                     <span
                                         onMouseEnter={() => {
@@ -89,7 +87,7 @@ const Nav = () => {
                                         PRIA
                                     </span>
                                 </NavLink>
-                                <NavLink
+                                {/* <NavLink
                                     href={{
                                         pathname: '/nav-item/cari',
                                     }}
@@ -103,7 +101,7 @@ const Nav = () => {
                                         className="text-[12px] font-extrabold px-1">
                                         ANAK
                                     </span>
-                                </NavLink>
+                                </NavLink> */}
                             </div>
                         </div>
 
@@ -167,7 +165,12 @@ const Nav = () => {
                                 active={
                                     router.pathname === '/nav-item/keranjang'
                                 }>
-                                <AiOutlineShoppingCart className="text-2xl" />
+                                <span className="indicator">
+                                    <span className="indicator-item text-white font-bold bg-red-500 px-[4px] rounded-xl">
+                                        0
+                                    </span>
+                                    <AiOutlineShoppingCart className="text-2xl" />
+                                </span>
                             </NavLink>
                             <NavLink
                                 href={{
@@ -185,9 +188,9 @@ const Nav = () => {
                     <div className="flex md:hidden flex-row flex-wrap items-center justify-center pt-1">
                         <NavLink
                             href={{
-                                pathname: '/sub-category/wanita',
+                                pathname: '/kategori/wanita',
                             }}
-                            active={router.pathname === '/sub-category/wanita'}>
+                            active={router.pathname === '/kategori/wanita'}>
                             <span
                                 onMouseEnter={() => {
                                     setDataCategory(HoverCategoryWanita())
@@ -198,9 +201,9 @@ const Nav = () => {
                         </NavLink>
                         <NavLink
                             href={{
-                                pathname: '/sub-category/pria',
+                                pathname: '/kategori/pria',
                             }}
-                            active={router.pathname === '/sub-category/pria'}>
+                            active={router.pathname === '/kategori/pria'}>
                             <span
                                 onMouseEnter={() => {
                                     setDataCategory(HoverCategoryPria())
@@ -209,7 +212,7 @@ const Nav = () => {
                                 PRIA
                             </span>
                         </NavLink>
-                        <NavLink
+                        {/* <NavLink
                             href={{
                                 pathname: '/nav-item/cari',
                             }}
@@ -221,7 +224,7 @@ const Nav = () => {
                                 className="text-[12px] font-extrabold px-1">
                                 ANAK
                             </span>
-                        </NavLink>
+                        </NavLink> */}
                     </div>
                 </div>
             </header>

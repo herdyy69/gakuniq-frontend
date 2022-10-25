@@ -63,6 +63,20 @@
     scroll-snap-align: start;
     padding: 30px;
   }
+  .text-stroke {
+      opacity: 0.8;
+    text-shadow: -2px -2px 0 #1e293b, 1px -1px 0 #1e293b, -1px 1px 0 #1e293b, 1px 1px 0 #1e293b;
+  }
+  .text-stroke2 {
+    opacity: 0.6;
+    text-shadow: -1px -1px 0 #1e293b, 1px -1px 0 #1e293b, -1px 1px 0 #1e293b, 1px 1px 0 #1e293b;  }
+  /* hover text-stroke */
+  .text-stroke:hover {
+    text-shadow: -2px -2px 0 #1e293b, 1px -1px 0 #1e293b, -1px 1px 0 #1e293b, 1px 1px 0 #1e293b;
+    opacity: 1;
+  }
+  
+  
 
 
 

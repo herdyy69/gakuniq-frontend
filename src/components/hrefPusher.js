@@ -1,21 +1,38 @@
 import React from 'react'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
+import Nav from './Layouts/Nav'
 
-export const HrefPusher = ({ children, Props }) => {
+export const HrefPusherDetail = ({ children, ...props }) => {
     const router = useRouter()
-    const { pathname } = router
 
-    const handlePush = e => {
-        e.preventDefault()
-        router.push(e.target.href)
-    }
+    // const handleClick = e => {
+    //     router.push(props.href)
+    // }
 
     return (
-        <a
-            href={pathname}
-            onClick={handlePush}
-            className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded-sm shadow text-sm mt-3 ml-3">
-            {children}
-        </a>
+        <Link
+            href={{
+                pathname: '/katalog/detail-product/',
+            }}>
+            <button className="bg-transparent glass hover:bg-[#e5e7eb] text-slate-800 text-sm font-bold px-3 py-2 rounded-sm mt-3">
+                {children}
+            </button>
+        </Link>
+    )
+}
+
+export const HrefPusherwishlist = ({ children, ...props }) => {
+    return (
+        <Link
+            href={{
+                pathname: '/katalog/detail-product/',
+            }}>
+            <button
+                onClick={() => handleAddToCart()}
+                className="bg-transparent glass hover:bg-[#7dd3fc] text-slate-800 text-sm font-bold px-3 py-2 rounded-sm mt-3">
+                {children}
+            </button>
+        </Link>
     )
 }

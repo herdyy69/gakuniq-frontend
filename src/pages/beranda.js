@@ -6,37 +6,45 @@ import SwiperHorizontal from '@/components/swiperJs/swiperHorizontal'
 import { References } from '@/components/SectionRefereces/References'
 import { CardRow } from '@/components/card/cardRow'
 
-const Beranda = () => {
+const Beranda = props => {
     return (
-        <AppLayout header={''}>
+        <AppLayout header={''} values={props.val}>
             <Head>
                 <title>GakUniq - Beranda</title>
             </Head>
 
             <div className="flex flex-col shadow overflow-hidden">
-                <div>
+                <div className="">
                     <SwiperVertical />
                 </div>
-                <div className="flex flex-col mt-4 items-center border-2 m-4 p-4">
-                    <div className="mb-2">
-                        <h1 className="text-2xl text-slate-800">
-                            ON FLASH SALE!
-                        </h1>
-                        <span className="font-mono text-lg">20 oct 2022</span>
+                <span className="bg-slate-50 h-[12px]"></span>
+                <span className="bg-slate-100 h-[12px]"></span>
+                <span className="bg-slate-200 h-[12px]"></span>
+                <div className="flex flex-row items-center bg-slate-300 w-auto h-auto py-3 shadow-md">
+                    <div className="flex flex-col items-center justify-center border-2 rounded-md min-h-[40vh] m-4 p-4">
+                        <div className="mb-2">
+                            <h1 className="text-2xl font-bold text-slate-500">
+                                ON FLASH SALE!
+                            </h1>
+                        </div>
                     </div>
-                    <div className="px-5 flex items-center">
+                    <div className="flex items-center">
                         <SwiperHorizontal />
                     </div>
                 </div>
-                <div className="my-6 mx-4 py-4 border-2">
-                    <h1 className="text-xl text-black mb-3 p-3 rounded-lg glass flex justify-center uppercase mx-2">
-                        Berdasarkan referensimu!
-                    </h1>
-                    <div className="flex flex-row flex-wrap justify-start items-start overflow-hidden">
+                <span className="bg-slate-200 h-[12px]"></span>
+                <span className="bg-slate-100 h-[12px]"></span>
+                <span className="bg-slate-50 h-[12px]"></span>
+                <div className="py-4 rounded-md bg-slate-50">
+                    <div className="flex flex-col flex-wrap justify-start items-start overflow-hidden">
+                        <h1 className="text-2xl font-bold text-slate-500 mx-5">
+                            Berdasarkan referensimu!
+                        </h1>
                         <References />
                     </div>
                 </div>
             </div>
+
             <div className="flex flex-col bg-[#f4f4f4] w-full h-full items-start md:items-center shadow-lg z-10 border-2">
                 <div className="px-5 md:px-0 py-4">
                     <h1 className="text-2xl text-slate-800 mx-2 mb-3">
